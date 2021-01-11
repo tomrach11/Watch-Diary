@@ -12,6 +12,7 @@ public class EpisodeMapper implements RowMapper<Episode> {
     public Episode mapRow(ResultSet rs, int i) throws SQLException {
         Episode episode = new Episode();
         episode.setEpisodeID(rs.getInt("episode_id"));
+        episode.setSeasonId(rs.getInt("season_id"));
         episode.setTitle(rs.getString("title"));
         episode.setNote(rs.getString("note"));
         episode.setRating(rs.getInt("rating"));

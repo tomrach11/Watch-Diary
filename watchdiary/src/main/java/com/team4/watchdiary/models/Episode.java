@@ -19,6 +19,7 @@ public class Episode {
     private int rating;
     private LocalDate viewDate;
     private boolean watched;
+    private int seasonId;
 
     public int getEpisodeID() {
         return episodeID;
@@ -68,5 +69,11 @@ public class Episode {
         this.watched = watched;
     }
     
-    
+    public int getSeasonId() {
+        return seasonId;
+    }
+
+    public void setSeasonId(int seasonId) {
+        this.seasonId = seasonId;
+    }
 }

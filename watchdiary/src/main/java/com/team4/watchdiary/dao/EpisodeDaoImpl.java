@@ -17,14 +17,15 @@ public class EpisodeDaoImpl implements EpisodeDao {
     @Override
     public Episode addEpisode(Episode episode) {
         //add to database
-        final String INSERT_EPISODE = "INSERT INTO Episode (title, note, rating, viewDate, toWatch, watched) " +
-                "VALUE (?, ?, ?, ?, ?, ?)";
+        final String INSERT_EPISODE = "INSERT INTO Episode (title, note, rating, viewDate, watched, season_id) " +
+                "VALUE (?, ?, ?, ?, ?)";
         jdbc.update(INSERT_EPISODE,
                 episode.getTitle(),
                 episode.getNote(),
                 episode.getRating(),
                 episode.getViewDate(),
-                episode.isWatched());
+                episode.isWatched(),
+                episode.getSeasonId());
 
         //get ID from database and save to episode object
         int id = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
@@ -43,8 +44,8 @@ public class EpisodeDaoImpl implements EpisodeDao {
     public Episode getEpisodeById(int id) {
         //use try catch to avoid getting exception but return null instead
         try {
-            final String SELECT_BY_EPISODE_ID = "SELECT * FROM Episode WHERE episode_id = ?";
-            return jdbc.queryForObject(SELECT_BY_EPISODE_ID, new EpisodeMapper(), id);
+            final String SELECT_BY_EPISODE_BY_ID = "SELECT * FROM Episode WHERE episode_id = ?";
+            return jdbc.queryForObject(SELECT_BY_EPISODE_BY_ID, new EpisodeMapper(), id);
         } catch (DataAccessException e) {
             //if id is not found in database return null
             return null;
@@ -58,8 +59,8 @@ public class EpisodeDaoImpl implements EpisodeDao {
                 "note = ?," +
                 "rating = ?," +
                 "viewDate = ?," +
-                "toWatch = ?," +
                 "watched = ?," +
+                "season_id = ?" +
                 "WHERE episode_id = ?";
         jdbc.update(UPDATE_EPISODE,
                 episode.getTitle(),
@@ -67,6 +68,7 @@ public class EpisodeDaoImpl implements EpisodeDao {
                 episode.getRating(),
                 episode.getViewDate(),
                 episode.isWatched(),
+                episode.getSeasonId(),
                 episode.getEpisodeID());
     }
 

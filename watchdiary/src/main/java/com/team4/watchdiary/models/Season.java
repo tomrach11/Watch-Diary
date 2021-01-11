@@ -21,6 +21,7 @@ public class Season {
     private LocalDate viewDate;
     private boolean watched;
     private ArrayList<Episode> arr;
+    private int tvShowId;
 
     public int getSeasonID() {
         return seasonID;
@@ -77,6 +78,12 @@ public class Season {
     public void setArr(ArrayList<Episode> arr) {
         this.arr = arr;
     }
-    
-    
+
+    public int getTvShowId() {
+        return tvShowId;
+    }
+
+    public void setTvShowId(int tvShowId) {
+        this.tvShowId = tvShowId;
+    }
 }
