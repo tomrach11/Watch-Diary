@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EpisodeDao {
     Episode addEpisode(Episode episode);
-    List<Episode> getAllEpisode();
+    List<Episode> getAllEpisodes();
     Episode getEpisodeById(int id);
     void updateEpisode(Episode episode);
     void deleteEpisode(int id);

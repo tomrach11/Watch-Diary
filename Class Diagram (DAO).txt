@@ -1,0 +1,41 @@
+==== DAO ====
+
++ MovieDao
+  + addMovie(Movie movie) : Movie
+  + readAll() : ArrayList<Movie> movies
+  + readById(int id) : Movie
+  + updateMovie(Movie movie) : void
+  + deleteMovie(int id) : void
+
++ MovieMapper
+  + mapRow(ResultSet rs) : Game
+
++ TVShowDao
+  + addTVShow(TVShow tvShow) : TVShow
+  + readAll() : ArrayList<TVShow> tvShow
+  + readById(int id) : TVShow
+  + updateTVShow(TVShow tvShow) : void
+  + deleteTVShow(int id) : void
+
+  + getSeasonForTVShow(int id) : ArrayList<Season> seasons
+  + associateSeason(List<TVShow> tvShows) : List<TVShow> 
+
++ TVShowMapper
+  + MapRow(ResultSet rs) : TVShow
+
++ SeasonDao
+  + addSeason(Season season) : Season
+  + readAll() : ArrayList<Season> season
+  + readById(int id) : Season
+  + updateSeason(Season season) : void
+  + deleteSeason(int id) : void
+
+  + getEpisodeForSeason(int id) : ArrayList<Episode> episodes
+  + associateEpisode(ArrayList<Season> seasons) : ArrayList<Season>
+
++ EpisodeDao
+  + addSeason(Episode episode) : Episode
+  + readAll() : ArrayList<Episode> episode
+  + readById(int id) : Episode
+  + updateEpisode(Episode episode) : void
+  + deleteEpisode(int id) : void
