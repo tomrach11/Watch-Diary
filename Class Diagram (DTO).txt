@@ -1,0 +1,42 @@
+Class Diagram by Tom Rachtawarn
+-------------------------------------------
+
+==== Model ====
+Movie
+- int movieId
+- String title
+- String note
+- int rating
+- LocalDate viewDate
+- boolean watched
+- boolean toWatch
+
+TVShow
+- int tvShowId
+- String title
+- String note
+- int rating
+- LocalDate viewDate
+- boolean toWatch
+- boolean watched
+- ArrayList<Season>
+
+Season
+- int seasonId
+- String title
+- String note
+- int rating
+- LocalDate viewDate
+- boolean watched
+- ArrayList<Episode>
+
+Episode
+- int episodeId
+- String title
+- String note
+- int rating
+- LocalDate viewDate
+- boolean watched
+
+
+
