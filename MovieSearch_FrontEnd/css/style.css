@@ -1,0 +1,16 @@
+p {
+    width: 25vw;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.halfscreen {
+    width: 50vw;
+}
+
+#navigation {
+    text-align: center;
+}

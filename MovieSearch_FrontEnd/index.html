@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="SearchPage"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SearchPage</title>
+    <link rel="stylesheet"  href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class = "navbar navbar-default">
+        
+    </nav>
+
+    <div class="flexbox">
+        <div class="container">
+            <div class = "navbar-header">
+                <a class ="navbar-brand" href ="SearchPage.html">Watch Diary</a>
+            </div>
+        </div>
+        <div class = "jumbotron">
+            <form id="searchForm">
+                <input type ="text" class="form-control" id="searchText" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src = "js/Main.js"></script>
+
+    <br><br>
+    <div class="flexbox" id="navigation">
+        <p>Watched Movies</p>
+        <p>Watched TV Shows</p>
+        <p>Watchlist Movies</p>
+        <p>Watchlist TV Shows</p>
+    </div>
+    <ul class="nav nav-tabs"></ul>
+
+    <div class="flexbox">
+        <div id="list" class="halfscreen">
+            <ul>
+                <li>Movie 1</li>
+                <li>Movie 2</li>
+                <li>Movie 3</li>
+            </ul>
+        </div>
+        <div id="info" class="halfscreen">
+            <ul>
+                <li>Stuff</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
