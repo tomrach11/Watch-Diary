@@ -35,7 +35,7 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public List<Movie> getAllMovie() {
+    public List<Movie> getAllMovies() {
         final String SELECT_ALL_MOVIE = "SELECT * FROM Movie";
         return jdbc.query(SELECT_ALL_MOVIE, new MovieMapper());
     }

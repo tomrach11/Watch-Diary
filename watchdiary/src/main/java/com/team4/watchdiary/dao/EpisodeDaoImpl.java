@@ -26,6 +26,16 @@ public class EpisodeDaoImpl implements EpisodeDao {
                 episode.getViewDate(),
                 episode.isWatched(),
                 episode.getSeasonId());
+        
+        //inefficient; final marketed product would have something different
+        final String CREATE_TEMP_TABLE = "CREATE TABLE Temp AS (SELECT COUNT(episode_ID) FROM Episode " +
+                                        "INNER JOIN Season ON Season.season_Id=Episode.season_Id " +
+                                        "WHERE Season.season_Id=?);";
+        jdbc.update(CREATE_TEMP_TABLE, episode.getSeasonId());
+        final String UPDATE_NUM_EPISODES = "UPDATE Season SET numEpisodes=(SELECT * FROM Temp) WHERE season_Id=?;";
+        jdbc.update(UPDATE_NUM_EPISODES,episode.getSeasonId());
+        final String REMOVE_TEMP_TABLE = "DROP TABLE Temp;";
+        jdbc.update(REMOVE_TEMP_TABLE);
 
         //get ID from database and save to episode object
         int id = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
@@ -35,7 +45,7 @@ public class EpisodeDaoImpl implements EpisodeDao {
     }
 
     @Override
-    public List<Episode> getAllEpisode() {
+    public List<Episode> getAllEpisodes() {
         final String SELECT_ALL_EPISODE = "SELECT * FROM Episode";
         return jdbc.query(SELECT_ALL_EPISODE, new EpisodeMapper());
     }
@@ -74,7 +84,7 @@ public class EpisodeDaoImpl implements EpisodeDao {
 
     @Override
     public void deleteEpisode(int id) {
-        final String DELETE_EPISODE = "DELETE FROM Movie WHERE episode_id = ?";
+        final String DELETE_EPISODE = "DELETE FROM Episode WHERE episode_id = ?";
         jdbc.update(DELETE_EPISODE, id);
     }
 }

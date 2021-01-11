@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SeasonDao {
     Season addSeason(Season season);
-    List<Season> getAllSeason();
+    List<Season> getAllSeasons();
     Season getSeasonById(int id);
     void updateSeason(Season season);
     void deleteSeason(int id);

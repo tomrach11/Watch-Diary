@@ -26,6 +26,16 @@ public class SeasonDaoImpl implements SeasonDao {
                 season.getViewDate(),
                 season.isWatched(),
                 season.getTvShowId());
+        
+        //inefficient; final marketed product would have something different
+        final String CREATE_TEMP_TABLE = "CREATE TABLE Temp AS (SELECT COUNT(season_Id) FROM Season \n" +
+                                        "INNER JOIN TVShow ON TVShow.tvshow_Id=Season.tvshow_Id \n" +
+                                        "WHERE TVShow.tvshow_Id=?);";
+        jdbc.update(CREATE_TEMP_TABLE, season.getTvShowId());
+        final String UPDATE_NUM_EPISODES = "UPDATE TVShow SET numSeasons=(SELECT * FROM Temp) WHERE tvshow_Id=?;";
+        jdbc.update(UPDATE_NUM_EPISODES,season.getTvShowId());
+        final String REMOVE_TEMP_TABLE = "DROP TABLE Temp;";
+        jdbc.update(REMOVE_TEMP_TABLE);
 
         //get ID from database and save to season object
         int id = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
@@ -34,12 +44,9 @@ public class SeasonDaoImpl implements SeasonDao {
         return season;
     }
 
-    private void insertEpisode(Season season) {
-        
-    }
 
     @Override
-    public List<Season> getAllSeason() {
+    public List<Season> getAllSeasons() {
         final String SELECT_ALL_SEASON = "SELECT * FROM Season";
         return jdbc.query(SELECT_ALL_SEASON, new SeasonMapper());
     }
@@ -58,11 +65,29 @@ public class SeasonDaoImpl implements SeasonDao {
 
     @Override
     public void updateSeason(Season season) {
+        final String UPDATE_SEASON = "UPDATE Season SET" +
+                "title = ?," +
+                "note = ?," +
+                "rating = ?," +
+                "viewDate = ?," +
+                "watched = ?," +
+                "tvshow_Id = ?" +
+                "WHERE season_Id = ?";
+        jdbc.update(UPDATE_SEASON,
+                season.getTitle(),
+                season.getNote(),
+                season.getRating(),
+                season.getViewDate(),
+                season.isWatched(),
+                season.getTvShowId(),
+                season.getSeasonID());
 
     }
 
     @Override
     public void deleteSeason(int id) {
+        final String DELETE_SEASON = "DELETE FROM Season WHERE season_id = ?";
+        jdbc.update(DELETE_SEASON, id);
 
     }
 }
