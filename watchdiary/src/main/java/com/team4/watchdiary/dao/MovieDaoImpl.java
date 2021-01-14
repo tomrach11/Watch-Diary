@@ -77,4 +77,16 @@ public class MovieDaoImpl implements MovieDao {
         final String DELETE_MOVIE = "DELETE FROM Movie WHERE movie_id = ?";
         jdbc.update(DELETE_MOVIE, id);
     }
+
+    @Override
+    public List<Movie> getToWatchMovies() {
+        final String SELECT_TO_WATCH_MOVIE = "SELECT * FROM Movie WHERE toWatch = true";
+        return jdbc.query(SELECT_TO_WATCH_MOVIE, new MovieMapper());
+    }
+
+    @Override
+    public List<Movie> getWatchedMovies() {
+        final String SELECT_WATCHED_MOVIE = "SELECT * FROM Movie WHERE watched = true";
+        return jdbc.query(SELECT_WATCHED_MOVIE, new MovieMapper());
+    }
 }

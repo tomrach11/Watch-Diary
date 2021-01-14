@@ -120,4 +120,52 @@ class MovieDaoTest {
         assertEquals(1, fromDao.size());
         assertNull(movieDao.getMovieById(movie2.getMovieID()));
     }
+
+    @Test
+    void getToWatchMovies() {
+        Movie movie = new Movie();
+        movie.setTitle("Movie1");
+        movie.setNote("Note1");
+        movie.setRating(5);
+        movie.setViewDate(LocalDate.now());
+        movie.setToWatch(true);
+        movie.setWatched(false);
+        movie = movieDao.addMovie(movie);
+
+        Movie movie2 = new Movie();
+        movie2.setTitle("Movie2");
+        movie2.setNote("Note2");
+        movie2.setRating(5);
+        movie2.setViewDate(LocalDate.now());
+        movie2.setToWatch(false);
+        movie2.setWatched(false);
+        movie2 = movieDao.addMovie(movie2);
+
+        List<Movie> fromDao = movieDao.getToWatchMovies();
+        assertEquals(1, fromDao.size());
+    }
+
+    @Test
+    void getWatchedMovie() {
+        Movie movie = new Movie();
+        movie.setTitle("Movie1");
+        movie.setNote("Note1");
+        movie.setRating(5);
+        movie.setViewDate(LocalDate.now());
+        movie.setToWatch(true);
+        movie.setWatched(true);
+        movie = movieDao.addMovie(movie);
+
+        Movie movie2 = new Movie();
+        movie2.setTitle("Movie2");
+        movie2.setNote("Note2");
+        movie2.setRating(5);
+        movie2.setViewDate(LocalDate.now());
+        movie2.setToWatch(false);
+        movie2.setWatched(false);
+        movie2 = movieDao.addMovie(movie2);
+
+        List<Movie> fromDao = movieDao.getWatchedMovies();
+        assertEquals(1, fromDao.size());
+    }
 }
