@@ -27,7 +27,7 @@ public class TVShowDaoImpl implements TVShowDao {
                 tvShow.isToWatch(),
                 tvShow.isWatched());
 
-        //get ID from database and save to movie object
+        //get ID from database and save to TVShow object
         int id = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
         tvShow.setTvShowID(id);
 
@@ -53,12 +53,14 @@ public class TVShowDaoImpl implements TVShowDao {
     }
 
     @Override
-    public void updateTVShow(TVShow tvShow) {
+    public boolean updateTVShow(TVShow tvShow) {
+        return true;
 
     }
 
     @Override
-    public void deleteTVShow(int id) {
+    public boolean deleteTVShow(int id) {
+        return true;
 
     }
 }

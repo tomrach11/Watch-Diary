@@ -46,6 +46,11 @@ CREATE TABLE Episode (
 		references Season(season_Id)
     );    
     
+INSERT INTO Movie (title, note, rating, viewDate, toWatch, watched) VALUES
+    ("Clue", "funny", 5 , "2015-02-01", false, true),
+    ("The Aristocats", "nostalgic", 3 , "2019-03-01", false, true),
+    ("Joker", "controversial", 4 , "2020-05-01", true, false);
+    
 -- USE MovieTVShowDB;
 -- SET SQL_SAFE_UPDATES=0;
 

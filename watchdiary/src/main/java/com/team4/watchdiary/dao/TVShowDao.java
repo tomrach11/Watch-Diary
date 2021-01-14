@@ -8,6 +8,6 @@ public interface TVShowDao {
     TVShow addTVShow(TVShow tvShow);
     List<TVShow> getAllTVShows();
     TVShow getTVShowById(int id);
-    void updateTVShow(TVShow tvShow);
-    void deleteTVShow(int id);
+    boolean updateTVShow(TVShow tvShow);
+    boolean deleteTVShow(int id);
 }
