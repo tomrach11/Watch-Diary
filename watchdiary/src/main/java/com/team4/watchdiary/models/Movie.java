@@ -76,5 +76,32 @@ public class Movie {
     public void setToWatch(boolean toWatch) {
         this.toWatch = toWatch;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie)) return false;
+
+        Movie movie = (Movie) o;
+
+        if (getMovieID() != movie.getMovieID()) return false;
+        if (getRating() != movie.getRating()) return false;
+        if (isWatched() != movie.isWatched()) return false;
+        if (isToWatch() != movie.isToWatch()) return false;
+        if (getTitle() != null ? !getTitle().equals(movie.getTitle()) : movie.getTitle() != null) return false;
+        if (getNote() != null ? !getNote().equals(movie.getNote()) : movie.getNote() != null) return false;
+        return getViewDate() != null ? getViewDate().equals(movie.getViewDate()) : movie.getViewDate() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getMovieID();
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getNote() != null ? getNote().hashCode() : 0);
+        result = 31 * result + getRating();
+        result = 31 * result + (getViewDate() != null ? getViewDate().hashCode() : 0);
+        result = 31 * result + (isWatched() ? 1 : 0);
+        result = 31 * result + (isToWatch() ? 1 : 0);
+        return result;
+    }
 }

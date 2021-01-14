@@ -55,12 +55,12 @@ public class MovieDaoImpl implements MovieDao {
     @Override
     public void updateMovie(Movie movie) {
         final String UPDATE_MOVIE = "UPDATE Movie SET " +
-                "title = ?," +
-                "note = ?," +
-                "rating = ?," +
-                "viewDate = ?," +
-                "toWatch = ?," +
-                "watched = ?," +
+                "title = ?, " +
+                "note = ?, " +
+                "rating = ?, " +
+                "viewDate = ?, " +
+                "toWatch = ?, " +
+                "watched = ? " +
                 "WHERE movie_id = ?";
         jdbc.update(UPDATE_MOVIE,
                 movie.getTitle(),
