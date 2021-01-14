@@ -44,8 +44,8 @@ public class MovieDaoImpl implements MovieDao {
     public Movie getMovieById(int id) {
         //use try catch to avoid getting exception but return null instead
         try {
-            final String SELECT_BY_GAME_ID = "SELECT * FROM Movie WHERE movie_id = ?";
-            return jdbc.queryForObject(SELECT_BY_GAME_ID, new MovieMapper(), id);
+            final String SELECT_BY_MOVIE_ID = "SELECT * FROM Movie WHERE movie_id = ?";
+            return jdbc.queryForObject(SELECT_BY_MOVIE_ID, new MovieMapper(), id);
         } catch (DataAccessException e) {
             //if id is not found in database return null
             return null;
