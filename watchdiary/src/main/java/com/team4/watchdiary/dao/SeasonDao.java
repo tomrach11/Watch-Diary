@@ -8,6 +8,6 @@ public interface SeasonDao {
     Season addSeason(Season season);
     List<Season> getAllSeasons();
     Season getSeasonById(int id);
-    void updateSeason(Season season);
-    void deleteSeason(int id);
+    boolean updateSeason(Season season);
+    boolean deleteSeason(int id);
 }

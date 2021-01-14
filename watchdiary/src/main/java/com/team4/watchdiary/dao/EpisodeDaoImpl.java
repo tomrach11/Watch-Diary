@@ -63,7 +63,7 @@ public class EpisodeDaoImpl implements EpisodeDao {
     }
 
     @Override
-    public void updateEpisode(Episode episode) {
+    public boolean updateEpisode(Episode episode) {
         final String UPDATE_EPISODE = "UPDATE Episode SET" +
                 "title = ?," +
                 "note = ?," +
@@ -72,19 +72,19 @@ public class EpisodeDaoImpl implements EpisodeDao {
                 "watched = ?," +
                 "season_id = ?" +
                 "WHERE episode_id = ?";
-        jdbc.update(UPDATE_EPISODE,
+        return jdbc.update(UPDATE_EPISODE,
                 episode.getTitle(),
                 episode.getNote(),
                 episode.getRating(),
                 episode.getViewDate(),
                 episode.isWatched(),
                 episode.getSeasonId(),
-                episode.getEpisodeID());
+                episode.getEpisodeID()) > 0;
     }
 
     @Override
-    public void deleteEpisode(int id) {
+    public boolean deleteEpisode(int id) {
         final String DELETE_EPISODE = "DELETE FROM Episode WHERE episode_id = ?";
-        jdbc.update(DELETE_EPISODE, id);
+        return jdbc.update(DELETE_EPISODE, id) > 0;
     }
 }

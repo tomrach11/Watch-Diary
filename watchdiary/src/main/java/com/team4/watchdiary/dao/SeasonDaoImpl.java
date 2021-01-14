@@ -64,7 +64,7 @@ public class SeasonDaoImpl implements SeasonDao {
     }
 
     @Override
-    public void updateSeason(Season season) {
+    public boolean updateSeason(Season season) {
         final String UPDATE_SEASON = "UPDATE Season SET" +
                 "title = ?," +
                 "note = ?," +
@@ -73,21 +73,21 @@ public class SeasonDaoImpl implements SeasonDao {
                 "watched = ?," +
                 "tvshow_Id = ?" +
                 "WHERE season_Id = ?";
-        jdbc.update(UPDATE_SEASON,
+        return jdbc.update(UPDATE_SEASON,
                 season.getTitle(),
                 season.getNote(),
                 season.getRating(),
                 season.getViewDate(),
                 season.isWatched(),
                 season.getTvShowId(),
-                season.getSeasonID());
+                season.getSeasonID()) > 0;
 
     }
 
     @Override
-    public void deleteSeason(int id) {
+    public boolean deleteSeason(int id) {
         final String DELETE_SEASON = "DELETE FROM Season WHERE season_id = ?";
-        jdbc.update(DELETE_SEASON, id);
+        return jdbc.update(DELETE_SEASON, id) > 0;
 
     }
 }

@@ -46,6 +46,41 @@ CREATE TABLE Episode (
 		references Season(season_Id)
     );    
     
+INSERT INTO Movie (title, note, rating, viewDate, toWatch, watched) VALUES
+    ("Clue", "funny", 5 , "2015-02-01", false, true),
+    ("The Aristocats", "nostalgic", 3 , "2019-03-01", false, true),
+    ("Joker", "controversial", 4 , "2020-05-01", true, false);
+    
+INSERT INTO TVShow (Title, Note, Rating, viewDate, ToWatch, Watched) VALUES
+	("Firefly","short lived", 7, "2015-06-03",false,true),
+    ("BBC Sherlock","mini series", 5, "2014-05-03",false,true);
+--    ("Pushing Daisies",null, null, null,true,false);
+    
+-- SELECT * FROM TVShow;
+INSERT INTO Season (Title, Note, Rating, viewDate, ToWatch, Watched, tvshow_Id) VALUES
+	("Series 1", "the best", 7, "2010-11-01", false, true, 2),
+    ("Series 2", "still good", 6, "2012-03-01", false, true, 2),
+    ("Series 3", "ehhhhh", 4, "2014-4-09", false, true, 2),
+    ("Series 4", "didn't watch", null, null, false, true, 2);
+-- SELECT * FROM Season;
+INSERT INTO Episode (Title, Note, Rating, viewDate, ToWatch, Watched, season_Id) VALUES
+	("A Study in Pink",null, 7, "2010-11-01", false, true, 1),
+    ("The Blind Banker",null, 7, "2010-11-01", false, true, 1),
+    ("The Great Game",null, 7, "2010-11-01", false, true, 1);
+INSERT INTO Episode (Title, Note, Rating, viewDate, ToWatch, Watched, season_Id) VALUES
+	("A Scandal in Belgravia",null, 6, "2012-03-01", false, true, 2),
+    ("The Hounds of Baskerville",null, 6, "2012-03-01", false, true, 2),
+    ("The Reichenbach Fall",null, 6, "2012-03-01", false, true, 2);
+INSERT INTO Episode (Title, Note, Rating, viewDate, ToWatch, Watched, season_Id) VALUES
+	("The Empty Hearse",null, 4, "2014-4-09", false, true, 3),
+    ("The Sign of Three",null, 4, "2014-4-09", false, true, 3),
+    ("His Last Vow",null, 4, "2014-4-09", false, true, 3),
+    ("The Abominable Bridge",null, 4, "2012-03-01", false, true, 3);
+INSERT INTO Episode (Title, Note, Rating, viewDate, ToWatch, Watched, season_Id) VALUES
+	("The Six Thatchers",null, null, null, false, false, 4),
+    ("The Lying Detective",null, null, null, false, false, 4),
+    ("The Final Problem",null, null, null, false, false, 4);
+
 -- USE MovieTVShowDB;
 -- SET SQL_SAFE_UPDATES=0;
 

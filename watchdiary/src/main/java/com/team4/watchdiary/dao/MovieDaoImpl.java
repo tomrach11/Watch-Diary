@@ -53,7 +53,7 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public void updateMovie(Movie movie) {
+    public boolean updateMovie(Movie movie) {
         final String UPDATE_MOVIE = "UPDATE Movie SET " +
                 "title = ?, " +
                 "note = ?, " +
@@ -62,20 +62,20 @@ public class MovieDaoImpl implements MovieDao {
                 "toWatch = ?, " +
                 "watched = ? " +
                 "WHERE movie_id = ?";
-        jdbc.update(UPDATE_MOVIE,
+        return jdbc.update(UPDATE_MOVIE,
                 movie.getTitle(),
                 movie.getNote(),
                 movie.getRating(),
                 movie.getViewDate(),
                 movie.isToWatch(),
                 movie.isWatched(),
-                movie.getMovieID());
+                movie.getMovieID()) > 0;
     }
 
     @Override
-    public void deleteMovie(int id) {
+    public boolean deleteMovie(int id) {
         final String DELETE_MOVIE = "DELETE FROM Movie WHERE movie_id = ?";
-        jdbc.update(DELETE_MOVIE, id);
+        return jdbc.update(DELETE_MOVIE, id) > 0;
     }
 
     @Override

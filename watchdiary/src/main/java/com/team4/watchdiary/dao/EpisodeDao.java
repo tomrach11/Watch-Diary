@@ -8,6 +8,6 @@ public interface EpisodeDao {
     Episode addEpisode(Episode episode);
     List<Episode> getAllEpisodes();
     Episode getEpisodeById(int id);
-    void updateEpisode(Episode episode);
-    void deleteEpisode(int id);
+    boolean updateEpisode(Episode episode);
+    boolean deleteEpisode(int id);
 }
