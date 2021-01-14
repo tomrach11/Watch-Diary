@@ -56,13 +56,13 @@ INSERT INTO TVShow (Title, Note, Rating, viewDate, ToWatch, Watched) VALUES
     ("BBC Sherlock","mini series", 5, "2014-05-03",false,true);
 --    ("Pushing Daisies",null, null, null,true,false);
     
--- SELECT * FROM TVShow;
+
 INSERT INTO Season (Title, Note, Rating, viewDate, ToWatch, Watched, tvshow_Id) VALUES
 	("Series 1", "the best", 7, "2010-11-01", false, true, 2),
     ("Series 2", "still good", 6, "2012-03-01", false, true, 2),
     ("Series 3", "ehhhhh", 4, "2014-4-09", false, true, 2),
     ("Series 4", "didn't watch", null, null, false, true, 2);
--- SELECT * FROM Season;
+
 INSERT INTO Episode (Title, Note, Rating, viewDate, ToWatch, Watched, season_Id) VALUES
 	("A Study in Pink",null, 7, "2010-11-01", false, true, 1),
     ("The Blind Banker",null, 7, "2010-11-01", false, true, 1),

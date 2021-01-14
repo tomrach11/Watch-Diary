@@ -32,8 +32,8 @@ public class TVShowController {
     }
     
     @GetMapping("/tvshow/{id}")
-    public ResponseEntity<TVShow> findByTVShowID(@PathVariable int showID) {
-        TVShow result = dao.getTVShowById(showID);
+    public ResponseEntity<TVShow> findByTVShowID(@PathVariable int id) {
+        TVShow result = dao.getTVShowById(id);
         if (result == null) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }

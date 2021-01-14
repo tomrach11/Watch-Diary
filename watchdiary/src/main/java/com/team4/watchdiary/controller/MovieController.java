@@ -44,8 +44,8 @@ public class MovieController {
     }
     
     @GetMapping("/movie/{id}")
-    public ResponseEntity<Movie> findByMovieID(@PathVariable int movieID) {
-        Movie result = movieDao.getMovieById(movieID);
+    public ResponseEntity<Movie> findByMovieID(@PathVariable int id) {
+        Movie result = movieDao.getMovieById(id);
         if (result == null) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
