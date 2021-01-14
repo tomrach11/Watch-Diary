@@ -15,8 +15,12 @@ public class MovieMapper implements RowMapper<Movie> {
         movie.setTitle(rs.getString("title"));
         movie.setNote(rs.getString("note"));
         movie.setRating(rs.getInt("rating"));
-        LocalDate viewDate = rs.getDate("viewDate").toLocalDate();
-        movie.setViewDate(viewDate);
+        if (rs.getDate("viewDate") != null) {
+            LocalDate viewDate = rs.getDate("viewDate").toLocalDate();
+            movie.setViewDate(viewDate);
+        } else {
+            movie.setViewDate(null);
+        }
         movie.setToWatch(rs.getBoolean("toWatch"));
         movie.setWatched(rs.getBoolean("watched"));
         return movie;
