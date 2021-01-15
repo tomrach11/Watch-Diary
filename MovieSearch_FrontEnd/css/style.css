@@ -14,3 +14,16 @@ p {
 #navigation {
     text-align: center;
 }
+
+li {
+    font-size: 200%;
+    padding: 10px;
+}
+
+ul {
+    text-align: center;
+}
+
+#brandIcon {
+    font-size: 250%;
+}
